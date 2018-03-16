@@ -39,6 +39,7 @@ if(!checkIfValidQuantity($quantity)) {
             this.idWort = id;
         }
 
+
         // Hier wird der Inhalt für die Seite erzeugt,
         // wo die Vokabelabfrage stattfindet
         function createVokabelboxContent(index) {
@@ -46,7 +47,7 @@ if(!checkIfValidQuantity($quantity)) {
             var content = "<h3>"+vokabelpaare[index].fremdspracheWort+"</h3>";
             content += "<br>";
             content += "<div class='form-group'>";
-            content += "<input type='text' class='form-control' style='height:1.5em;font-size:1.5em;padding:5px;' placeholder='Auf deutsch?' id='answerinput'></div>";
+            content += "<input type='text' class='form-control' style='height:1.5em;font-size:1.5em;padding:5px;' placeholder='Deutsche Übersetzung' id='answerinput'></div>";
             content += "<p>Noch "+(vokabelpaare.length-index)+"</p>";
             content += "<div><button id='nextButton' type='button' class='btn btn-info' onclick='nextVocabulary()'>Prüfen</button>";
             content += "<br><button type='button' style='margin-top:25px;' class='btn btn-danger' onclick='goToStart()'>Schluss</button></div>";
@@ -110,7 +111,7 @@ if(!checkIfValidQuantity($quantity)) {
             setTimeout(function() {
                 $('#responseBox').modal('hide');
                 prepareNextVocabulary();
-            }, 2000);
+            }, 750);
         }
 
         // Nächste Vokabel laden und Vokabelbox erzeugen
