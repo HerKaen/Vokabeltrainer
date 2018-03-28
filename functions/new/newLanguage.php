@@ -1,7 +1,7 @@
 <?php
 # Datenbankverbindung und DB-Funktionen importieren
-require_once("includes/db_connection.php");
-require_once("includes/common.php");
+require_once("../../includes/db_connection.php");
+require_once("../../includes/common.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,10 +11,10 @@ require_once("includes/common.php");
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <?php
     # Hier laden wir Bootstrap und Fontawesome
-    require_once("includes/dependencies.php");
+    require_once("../../includes/dependencies.php");
     ?>
     <!-- Eigenes Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
     <!-- Funktionen -->
     <script>
         // Prüfen, ob Box für die neue Sprache nicht leer ist
@@ -69,7 +69,7 @@ require_once("includes/common.php");
                 </div>
                 <!-- Button für das Hinzufügen der neuen Sprache -->
                 <button id="addLanguageButton" type="button" class="btn btn-primary" style="width:100%;" onclick="addLanguage()" disabled>Hinzufügen</button>
-                <a href="index.php" class="btn btn-primary" style="width:100%;margin-top:25px;">Zurück zur Startseite</a>
+                <a href="vokabeln.php" class="btn btn-primary" style="width:100%;margin-top:25px;">Zurück zur Startseite</a>
             </div>
         </div>
     </div>

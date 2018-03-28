@@ -8,7 +8,7 @@ $quantity=$_GET['qua'];
 # Eine zusätzliche Überprüfung, so dass bei GET nicht
 # nachträglich eigene Werte eingepfuscht werden können
 if(!checkIfValidQuantity($quantity)) {
-    header('Location: index.php');
+    header('Location: vokabeln.php');
     die();
 }
 ?>
@@ -58,7 +58,7 @@ if(!checkIfValidQuantity($quantity)) {
         // Benutzer möchte Abfrage abbrechen
         function goToStart() {
             if (window.confirm("Wirklich abbrechen?") == true) {
-                window.location = "index.php";
+                window.location = "vokabeln.php";
             }
         }
 
@@ -126,7 +126,7 @@ if(!checkIfValidQuantity($quantity)) {
                 var content = "<h1>Dein Ergebnis</h1>";
                 content += "<h3><i class='fa fa-check' style='color:green;margin-right:10px;'></i>Richtige Antworten: "+correct+"</h2>";
                 content += "<h3><i class='fa fa-times' style='color:red;margin-right:10px;x'></i>Falsche Antworten: "+(vokabelpaare.length-correct)+"</h2>";
-                content += "<a href='index.php' style='margin-top:25px;' class='btn btn-info'>Zurück zur Startseite</button>"
+                content += "<a href='vokabeln.php' style='margin-top:25px;' class='btn btn-info'>Zurück zur Startseite</button>"
                 $('#vokabelbox').html(content);
             }
         }
@@ -149,7 +149,7 @@ if(!checkIfValidQuantity($quantity)) {
                     var phpresponse = JSON.parse(answer);
                     for (x in phpresponse) {
                         // vokabelpaare.push(new Vokabelpaar(phpresponse[x].Deutsch,decodeURIComponent(phpresponse[x].Fremdsprache),phpresponse[x].Aussprache,phpresponse[x].id));
-                        vokabelpaare.push(new Vokabelpaar(phpresponse[x].Deutsch,decodeURIComponent(phpresponse[x].Fremdsprache),phpresponse[x].id));
+                        vokabelpaare.push(new Vokabelpaar(phpresponse[x].Deutsch,decodeURIComponent(phpresponse[x].Fremdsprache),phpresponse[x].Zeitform,phpresponse[x].id));
                     }
                 },
                 error: function(){
@@ -158,9 +158,9 @@ if(!checkIfValidQuantity($quantity)) {
             });
         }
 
-        // Vokabel besorgen, wenn die Seite fertig geladen wurde
+        // Konjugation besorgen, wenn die Seite fertig geladen wurde
         $( document ).ready(function() {
-            getVocabularyFromDB();
+            getKonjugationFromDB();
             if(vokabelpaare != null && vokabelpaare.length > 0) {
                 createVokabelboxContent(currentIndex);
             }

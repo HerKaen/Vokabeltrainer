@@ -702,7 +702,8 @@
 
     .navbar-right2 {
         float: right !important;
-        margin-right: 0px;
+        margin-right: 5px;
+        margin-left: 10px;
         padding-top: 5px;
     }
 

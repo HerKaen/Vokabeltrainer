@@ -1,20 +1,20 @@
 <?php
 # Datenbankverbindung und DB-Funktionen importieren
-require_once("includes/db_connection.php");
-require_once("includes/common.php");
+require_once("../../includes/db_connection.php");
+require_once("../../includes/common.php");
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Vokabeltrainer Neue Vokabel</title>
+    <title>Vokabeltrainer Neue Konjugation</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <?php
     # Hier laden wir Bootstrap und Fontawesome
-    require_once("includes/dependencies.php");
+    require_once("../../includes/dependencies.php");
     ?>
     <!-- Eigenes Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
     <!-- Funktionen -->
     <script>
         function activateInputBoxes() {
@@ -23,44 +23,45 @@ require_once("includes/common.php");
             if($("#languagesel").val()!="") {
                 $("#deutsch").attr("disabled",false);
                 $("#fremdsprache").attr("disabled",false);
-                // $("#aussprache").attr("disabled",false);
+                $("#zeitform").attr("disabled",false);
             }
             else {
                 $("#deutsch").attr("disabled",true);
                 $("#fremdsprache").attr("disabled",true);
-                // $("#aussprache").attr("disabled",true);
+                $("#zeitform").attr("disabled",true);
             }
         }
-        // Wenn deutsch und fremdsprache eingetragen
+        // Wenn deutsch,fremdsprache und Zeitform eingetragen
         // sind, wird der Hinzufügen-Button aktiviert
         function checkBoxes() {
             var deutsch = $("#deutsch").val();
             var fremdsprache = $("#fremdsprache").val();
+            var zeitform = $("#zeitform").val();
             // var aussprache = $("#aussprache").val();
-            if(deutsch!="" && fremdsprache!="") {
-                $("#addWordButton").attr("disabled",false);
+            if(deutsch!="" && fremdsprache!="" && zeitform!="") {
+                $("#addKonjugationButton").attr("disabled",false);
             }
             else {
-                $("#addWordButton").attr("disabled",true);
+                $("#addKonjugationButton").attr("disabled",true);
             }
         }
 
-        // Ein neues Wort wird hinzugefügt
-        function addWord() {
+        // Eine neue Konjugation wird hinzugefügt
+        function addKonjugation() {
             // Alle Werte aus den Inputboxen abrufen
             var language = $("#languagesel").val();
             var deutsch = $("#deutsch").val();
             var fremdsprache = encodeURIComponent($("#fremdsprache").val());
-            // var aussprache = $("#aussprache").val();
+            var zeitform = $("#zeitform").val();
             // AJAX Aufruf zum Hinzufügen
             $.ajax({
                 type: "POST",
-                url: "ajax/addWord.php",
+                url: "ajax/addKonjugation^.php",
                 data: {
                     languageId : language,
                     deutschWord : deutsch,
                     fremdspracheWord : fremdsprache,
-                    // ausspracheWord : aussprache
+                    zeitform : zeitform
                 },
                 cache: false,
                 success: function(answer) {
@@ -68,7 +69,7 @@ require_once("includes/common.php");
                     // Boxen leeren
                     $("#deutsch").val("");
                     $("#fremdsprache").val("");
-                    // $("#aussprache").val("");
+                    $("#zeitform").val("");
                 },
                 error: function(){
                     alert("Es ist ein Fehler aufgetreten");
@@ -111,12 +112,12 @@ require_once("includes/common.php");
                     <label for="fremdsprache">Fremdsprache:</label>
                     <input type="text" class="form-control" onkeyup="checkBoxes()" disabled id="fremdsprache">
                 </div>
-                <!--<div class="form-group">
-                    <label for="aussprache">Aussprache:</label>
-                    <input type="text" class="form-control" onkeyup="checkBoxes()" disabled id="aussprache">
-                </div>-->
-                <button id="addWordButton" type="button" class="btn btn-primary" style="width:100%;" onclick="addWord()" disabled>Hinzufügen</button>
-                <a href="index.php" class="btn btn-primary" style="width:100%;margin-top:25px;">Zurück zur Startseite</a>
+                <div class="form-group">
+                    <label for="zeitform">Zeitform:</label>
+                    <input type="text" class="form-control" onkeyup="checkBoxes()" disabled id="zeitform">
+                </div>
+                <button id="addKonjugationButton" type="button" class="btn btn-primary" style="width:100%;" onclick="addKonjugation()" disabled>Hinzufügen</button>
+                <a href="konjugation.php" class="btn btn-primary" style="width:100%;margin-top:25px;">Zurück zur Konjugations-Seite</a>
             </div>
         </div>
     </div>

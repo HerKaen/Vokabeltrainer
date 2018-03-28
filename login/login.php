@@ -17,9 +17,9 @@ if (isset($_GET['login'])) {
     if ($user !== false && password_verify($passwort, $user['passwort'])) {
         $_SESSION['userid'] = $user['id'];
 //        $_SESSION['uname'] = $user['name'];
-//        header('location: ../index.php');
-//        header('location: dirname(__DIR__, 1) . /index.php');
-        echo '<br><center><h4>Du wurdest erfolgreich eingeloggt. <a href="../index.php">Zum Vokabeltrainer</a></h4></center>';
+//        header('location: ../vokabeln.php');
+//        header('location: dirname(__DIR__, 1) . /vokabeln.php');
+        echo '<br><center><h4>Du wurdest erfolgreich eingeloggt. <a href="../vokabeln.php">Zum Vokabeltrainer</a></h4></center>';
     } else {
         $errorMessage = "E-Mail oder Passwort war ungültig<br>";
     }

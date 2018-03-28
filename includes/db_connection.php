@@ -5,8 +5,8 @@ date_default_timezone_set("Europe/Berlin");
 # als letzten Parameter eingeben.
 
 # Online Bplaced
-$pdo=new PDO('mysql:host=localhost;dbname=herkaen;charset=utf8;', 'herkaen', 'BananenBrot');
+//$pdo=new PDO('mysql:host=localhost;dbname=herkaen;charset=utf8;', 'herkaen', 'BananenBrot');
 
 # Localhost Xampp
-//$pdo=new PDO('mysql:host=localhost;dbname=vokabeltrainer;charset=utf8;', 'root', '');
+$pdo=new PDO('mysql:host=localhost;dbname=vokabeltrainer;charset=utf8;', 'root', '');
 ?>
